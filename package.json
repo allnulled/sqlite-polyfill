@@ -1,6 +1,6 @@
 {
   "name": "@allnulled/sqlite-polyfill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SQLite Polyfill. Cross-environment: same API for Node.js and browser.",
   "main": "sqlite-polyfill.js",
   "scripts": {

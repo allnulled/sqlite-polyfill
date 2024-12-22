@@ -1,3 +1,7 @@
+/**
+ * From: https://github.com/allnulled/sqlite-polyfill
+ * Also: https://www.npmjs.com/package/@allnulled/sqlite-polyfill
+ */
 (function (factory) {
   const mod = factory();
   if (typeof window !== 'undefined') {
@@ -18,6 +22,18 @@
     }
 
     async init(dbName = ':memory:', wasm_path = "$filename") {
+      Validate_parameters: {
+        if (typeof dbName !== "string") {
+          throw new Error("Required parameter 1 on «sqlitePolyfill.init()» to be a string with the name of the database");
+        }
+        if (typeof wasm_path !== "string") {
+          throw new Error("Required parameter 2 on «sqlitePolyfill.init()» to be a string with the path of the «sql-wasm.wasm» file");
+        }
+      }
+      // Set the database name as localStorage key:
+      Set_localStorage_key: {
+        this.localStorageKey = dbName;
+      }
       if (this.isBrowser) {
         if (!window.initSqlJs) {
           throw new Error("sql.js is required in the browser. Make sure it's loaded.");
